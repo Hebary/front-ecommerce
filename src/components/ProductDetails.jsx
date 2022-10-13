@@ -4,19 +4,25 @@ import ItemCount from "./ItemCount"
 import { format } from "../helpers/helpers";
 import Spinner from "./Spinner";
 import useCart from "../hooks/useCart";
-
+import Alert from "./Alert";
 const ProductDetails = ({ product }) => {
 
     const [itemCount, setItemCount] = useState(0);
+    const [msg, setMsg] = useState('');
     const { addItem }  = useCart();
-    const onAdd = count => {
-        setItemCount(count)
-        alert(`You have selected ${count} products: ${product.name}`)
-        addItem(product, count)
-    }
 
+    const onAdd = count => {
+        setItemCount(count);
+        setMsg(`${count} ${product.name} added to cart`);
+        addItem(product, count);
+        setTimeout(() => {
+            setMsg('');
+        }, 3000);
+    }
+    
     return (
         <>
+        {msg && <Alert alert={{msg, error: false}}/>}
             {product._id ? 
             <div className=" animate md:flex gap-x-10  w-full">
                 <div>
