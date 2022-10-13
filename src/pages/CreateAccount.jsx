@@ -108,7 +108,7 @@ const CreateAccount = () => {
 
     return (
         <div className="animate">
-            <h1 className="animate text-5xl text-sky-600 font-black capitalize">Register now to manage your{' '}
+            <h1 className="animate text-5xl text-sky-600 font-black capitalize">Register now to find your{' '}
                 <span className="text-gray-600">products</span>
             </h1>
             {
