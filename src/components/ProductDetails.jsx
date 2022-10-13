@@ -5,6 +5,8 @@ import { format } from "../helpers/helpers";
 import Spinner from "./Spinner";
 import useCart from "../hooks/useCart";
 import Alert from "./Alert";
+
+
 const ProductDetails = ({ product }) => {
 
     const [itemCount, setItemCount] = useState(0);

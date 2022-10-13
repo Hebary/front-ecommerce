@@ -23,21 +23,16 @@ useEffect( ()=> {
 
 const navigate = useNavigate();
 //Functions 
-// const updateStock = arrayOrder  => {
-    
-//     arrayOrder.forEach( item => {
-       
-//         cartList.forEach(async itemCL => {
-            
-//             if(itemCL.id === item.id ){
-//                 const itemRef = doc(db, "products", itemCL.id);
-//                 await updateDoc(itemRef, {
-//                   stock: (itemCL.stock-itemCL.quantity) 
-//                 });
-//             }
-//         });
-//     });
-// }
+
+const setStock = orderedProducts  => {
+    orderedProducts.forEach( item => {
+        cartList.forEach( async itemCL => {
+            if(itemCL._id === item.id ){
+                await axiosClient.put(`/products/${itemCL._id}`, {stock: (item.stock - itemCL.quantity)})
+            }
+        });
+    });
+}
 
 const handleOrder = async () => {
     const order = {
@@ -53,6 +48,7 @@ const handleOrder = async () => {
             price: item.price,
             qty: item.quantity,
             id: item._id,
+            stock:item.stock
         })),
         date: (new Date()).toLocaleString(),
         total: format(total)
@@ -61,6 +57,7 @@ const handleOrder = async () => {
         console.log(order);
         const { data } = await axiosClient.post("/cart", order);
         setMsg(data.msg);
+        setStock(order.products);
         setTimeout(() => {
             clearCartList();
             navigate("/products");
