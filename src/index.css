@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,*::before,*::after{
+    box-sizing:border-box;
+}
+.animate{
+    animation:animate .5s ease;
+}
+
+.counter{
+    position: relative;
+    top: -9px;
+    left: -6px;
+    width:18px;
+    height:18px;
+    outline: 2px solid rgb(0, 0, 0);
+    text-align:center ;
+    line-height:18px;
+    font-size: 10px;    
+    font-weight: bold;
+}
+.counter:hover{
+    background-color: rgb(11, 136, 239);
+    cursor: pointer;
+    transition:all .3s ease-out;
+    outline: 2px solid #fff;
+}
+
+@keyframes animate {
+    from{
+        transform: translateY(-150px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* 
+
+@media screen and (max-width: 768px){
+    .counter{
+        left:40px;
+        top:-57px;
+    }
+} */
