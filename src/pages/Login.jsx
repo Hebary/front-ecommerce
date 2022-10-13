@@ -40,7 +40,7 @@ const Login = () => {
     const { msg } = alert;
     return (
         <div className="animate">
-            <h1 className="animate text-5xl text-sky-600 font-black capitalize">Log in and manage your{' '}
+            <h1 className="animate text-5xl text-sky-600 font-black capitalize">Log in and find your{' '}
                 <span className="text-gray-600">Products</span></h1>
 
             {
