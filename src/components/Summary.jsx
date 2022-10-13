@@ -65,12 +65,6 @@ const handleOrder = async () => {
             clearCartList();
             navigate("/products");
         }, 3000);
-
-        // const newOrder = doc(collection(db, "orders"));
-        //     await setDoc(newOrder, order);
-        //     alert("Order created successfully\nApoint this ID: "+ newOrder.id);    
-        //     updateStock(order.items);
-        //     clearCartList();
     }catch(err){
         console.log(' Order catch ',err) 
     }

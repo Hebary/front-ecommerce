@@ -16,7 +16,7 @@ const CreateProduct = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     if([name, price, thumbnail, stock].includes("") ) {
-      showAlert({msg: 'Todos los campos son obligatorios', error: true});
+      showAlert({msg: 'all Fields are required', error: true});
       return;
     }
 
