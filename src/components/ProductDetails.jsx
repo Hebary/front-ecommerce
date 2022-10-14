@@ -24,7 +24,9 @@ const ProductDetails = ({ product }) => {
     
     return (
         <>
-        {msg && <Alert alert={{msg, error: false}}/>}
+            {msg && <div className="w-1/2 mx-auto">
+                        <Alert alert={{msg, error: false}}/>
+                    </div>}
             {product._id ? 
             <div className=" animate md:flex gap-x-10  w-full">
                 <div>
@@ -40,7 +42,7 @@ const ProductDetails = ({ product }) => {
                             ? <ItemCount stock={product.stock} initial={itemCount} onAdd={onAdd} />
                             : <div className="md:flex items-center gap-x-3 justify-evenly">
                                 <Link to='/products/cart'><button className=" bg-green-500 hover:bg-green-700 px-5 transition-colors duration-300 text-white font-black rounded-lg py-2 w-full">Checkout</button></Link>
-                                <Link to='/'><button className="text-white font-black rounded-lg px-5 py-2 transition-colors duration-300 hover:bg-sky-600 bg-sky-400">Go Shop</button></Link>
+                                <Link to='/products'><button className="text-white font-black rounded-lg px-5 py-2 transition-colors duration-300 hover:bg-sky-600 bg-sky-400">Go Shop</button></Link>
                             </div>
 
                     }

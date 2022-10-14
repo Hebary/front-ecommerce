@@ -12,7 +12,7 @@ const Summary = () => {
 
 const { cartList, clearCartList } = useCart();
 const { auth } = useAuth();
-const [ msg, setMsg ] = useState(''); 
+const [ alert, setAlert ] = useState({}); 
 const [total, setTotal] = useState(0);
 
 
@@ -56,21 +56,24 @@ const handleOrder = async () => {
     try {
         console.log(order);
         const { data } = await axiosClient.post("/cart", order);
-        setMsg(data.msg);
+        setAlert({msg:data.msg, error: false});
         setStock(order.products);
         setTimeout(() => {
             clearCartList();
+            setAlert({});
             navigate("/products");
         }, 3000);
     }catch(err){
-        console.log(' Order catch ',err) 
+        console.log(' Order catch ', err) 
     }
 } 
 
-    
+    const { msg } = alert;
     return (
         <div className=" animate summary shadow-md flex w-1/5 items-center gap-4 flex-col rounded-lg">
-            {msg && <Alert alert={{msg, error:false}}/>}
+             {msg && <div className="w-full mb-3">
+                        <Alert alert={alert}/>
+                    </div>}
            <h1 className="font-bold text-3xl letter-space">Summary</h1>
             <p>Subtotal:{' '}<span className="font-bold">{format(total)}</span></p>
             <p>Taxes:{' '}<span className="font-bold">{format(total*0.11)}</span></p>
