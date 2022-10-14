@@ -36,7 +36,7 @@ const ProductsProvider = ({ children }) => {
             }
         }
         fetchProducts()
-    }, [])
+    }, [auth])
 
   
 

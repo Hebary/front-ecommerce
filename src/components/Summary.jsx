@@ -43,7 +43,7 @@ const handleOrder = async () => {
             phone:auth.phone,
             address: auth.address
         },
-        products : cartList.map(item=>({
+        products : cartList.map(item => ({
             name: item.name,
             price: item.price,
             qty: item.quantity,

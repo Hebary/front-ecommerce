@@ -1,5 +1,6 @@
 import useProducts from "../hooks/useProducts"
 import Product from "../components/Product"
+import Spinner from "../components/Spinner";
 
 
 const Products = () => {
@@ -20,7 +21,7 @@ const Products = () => {
               }
             </div>
           </div>
-          : <p className="m-3 font-semibold">No products found...</p>
+          : <Spinner />
       }
     </>
   )

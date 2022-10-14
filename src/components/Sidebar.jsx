@@ -5,6 +5,8 @@ const Sidebar = () => {
 
     const { auth } = useAuth();
 
+
+
     return (
         <aside className="animate md:w-1/3 lg:w-1/4 xl:w-1/5 px-5 py-10 bg-gray-100 shadow-md ">
             <h3 className="p-3 text-lg border-black">¡Hi, <span className="font-semibold font-sans">{auth.name}!</span></h3>
@@ -17,6 +19,7 @@ const Sidebar = () => {
                 </svg>
                 <p className="ml-3 text-gray-700 hover:text-black">Create Product</p>
             </Link> */}
+            {/* <img src={`backend/avatar/${auth.file}`} alt={`avatar ${auth.file}`} /> */}
         </aside>
     )
 }
