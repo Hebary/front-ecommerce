@@ -5,14 +5,15 @@ import useAuth from '../hooks/useAuth'
 import axiosClient from "../config/axiosClient"
 import Alert from "./Alert"
 import { useNavigate } from "react-router-dom"
+import useProducts from "../hooks/useProducts"
 
 
 const Summary = () => {
 //Hooks
 
 const { cartList, clearCartList } = useCart();
+const { showAlert, alert } = useProducts();
 const { auth } = useAuth();
-const [ alert, setAlert ] = useState({}); 
 const [total, setTotal] = useState(0);
 
 
@@ -56,11 +57,10 @@ const handleOrder = async () => {
     try {
         console.log(order);
         const { data } = await axiosClient.post("/cart", order);
-        setAlert({msg:data.msg, error: false});
+        showAlert({msg:data.msg, error: false});
         setStock(order.products);
         setTimeout(() => {
             clearCartList();
-            setAlert({});
             navigate("/products");
         }, 3000);
     }catch(err){

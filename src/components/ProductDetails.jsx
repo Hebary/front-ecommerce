@@ -5,27 +5,25 @@ import { format } from "../helpers/helpers";
 import Spinner from "./Spinner";
 import useCart from "../hooks/useCart";
 import Alert from "./Alert";
+import useProducts from "../hooks/useProducts";
 
 
 const ProductDetails = ({ product }) => {
 
     const [itemCount, setItemCount] = useState(0);
-    const [msg, setMsg] = useState('');
     const { addItem }  = useCart();
-
+    const { showAlert, alert } = useProducts();
     const onAdd = count => {
         setItemCount(count);
-        setMsg(`${count} ${product.name} added to cart`);
+        showAlert({msg:`${count} ${product.name} added to cart`,error:false});
         addItem(product, count);
-        setTimeout(() => {
-            setMsg('');
-        }, 3000);
+        
     }
-    
+    const { msg } = alert;
     return (
         <>
             {msg && <div className="w-1/2 mx-auto">
-                        <Alert alert={{msg, error: false}}/>
+                        <Alert alert={alert}/>
                     </div>}
             {product._id ? 
             <div className=" animate md:flex gap-x-10  w-full">
